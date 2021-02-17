@@ -34,7 +34,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="vh-100">
+            <main>
                 {{ $slot }}
             </main>
         </div>

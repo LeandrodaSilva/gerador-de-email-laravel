@@ -76,7 +76,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -84,7 +84,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -92,7 +92,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ]
                 ]
@@ -106,7 +106,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -114,7 +114,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -122,7 +122,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -130,7 +130,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -138,7 +138,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ],
                     [
@@ -146,7 +146,7 @@ class EmailTemplate extends Component
                         'titulo' => "Camiseta Masculina Uphill Aqui se Fabrica lendas",
                         'desconto' => "",
                         'preco-anterior' => "",
-                        'preco' => "R$59,90",
+                        'preco' => "59,90",
                         'link' => "https://www.uphillstore.com.br/camiseta-masculina-uphill-aqui-se-fabrica-lendas"
                     ]
                 ]

@@ -1,93 +1,92 @@
 <div class="container-fluid col-12">
-    <div class="row">
-        <div class="container-fluid bg-white py-2">
-            <div class="col-sm">
-                <div class="row">
-                    <div class="mr-2">
-                        <button type="button"
-                                class="btn btn-primary"
-                                data-toggle="modal" data-target="#importCSV">
-                            Importar CSV
-                        </button>
-                        <form wire:submit.prevent="importCSV">
-                            <!-- Modal -->
-                            <div class="modal fade"
-                                 wire:ignore
-                                 id="importCSV"
-                                 tabindex="-1"
-                                 aria-labelledby="importCSVLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="importCSVLabel">Importar CSV</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlFile1">selecione o arquivo .csv</label>
-                                                    <input type="file"
-                                                           class="form-control-file"
-                                                           wire:model="csv"
-                                                           accept=".txt,.csv"
-                                                           name="csv"
-                                                           id="exampleFormControlFile1">
-                                                    @error('csv')
-                                                    <span class="error">{{ $message }}</span>
-                                                    @enderror
+    <div class="py-1 row justify-content-center"
+         style="overflow-y: hidden; display: flex; flex-direction: row;">
+        <div class="col-4 bg-white py-2" style="overflow-y: auto; height: calc(100vh - 4.5rem);">
+            <form wire:submit.prevent="importCSV">
+                <fieldset>
+                    <legend>Opções:</legend>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <button type="button"
+                                        class="btn btn-primary w-100"
+                                        data-toggle="modal" data-target="#importCSV">
+                                    Importar CSV
+                                </button>
+
+{{--                                <form wire:submit.prevent="importCSV">--}}
+                                    <!-- Modal -->
+                                    <div class="modal fade"
+                                         wire:ignore
+                                         id="importCSV"
+                                         tabindex="-1"
+                                         aria-labelledby="importCSVLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="importCSVLabel">Importar CSV</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button"
-                                                    class="btn btn-danger"
-                                                    data-dismiss="modal">Cancelar</button>
-                                            <button type="submit"
-                                                    data-toggle="modal"
-                                                    data-target="#importCSV"
-                                                    class="btn btn-success">Importar</button>
+
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlFile1">selecione o arquivo .csv</label>
+                                                        <input type="file"
+                                                               class="form-control-file"
+                                                               wire:model="csv"
+                                                               accept=".txt,.csv"
+                                                               name="csv"
+                                                               id="exampleFormControlFile1">
+                                                        @error('csv')
+                                                        <span class="error">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button"
+                                                            class="btn btn-danger"
+                                                            data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit"
+                                                            data-toggle="modal"
+                                                            data-target="#importCSV"
+                                                            class="btn btn-success">Importar</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+{{--                                </form>--}}
                             </div>
-                        </form>
-                    </div>
 
-                    @if($tabelas)
-                        <div class="mr-2">
-                            <div class="form-group">
-                                <select class="form-control"
-                                        style="width: 150px;"
-                                        wire:change="changeTable($event.target.value)"
-                                        wire:model="csv_table">
-                                    <option value="">Usar Tabela</option>
-                                    @foreach($tabelas as $index => $tabela)
-                                        <option value="{{$index}}">{{$index}}</option>
-                                    @endforeach
-                                </select>
+                            @if($tabelas)
+                                <div class="mb-2 mt-3">
+                                    <div class="form-group">
+                                        <select class="form-control w-100"
+                                                style="width: 150px;"
+                                                wire:change="changeTable($event.target.value)"
+                                                wire:model="csv_table">
+                                            <option value="">Usar Tabela</option>
+                                            @foreach($tabelas as $index => $tabela)
+                                                <option value="{{$index}}">{{$index}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
+
+                            <div class="mb-2">
+                                <button type="button" class="btn btn-success w-100" wire:click="exportToHTML">
+                                    Exportar HTML
+                                </button>
                             </div>
                         </div>
-                    @endif
-
-{{--                    <div class="mr-2">--}}
-{{--                        <button type="button" class="btn btn-secondary" wire:click="sendTestEmail">--}}
-{{--                            Enviar E-Mail de Teste--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-
-                    <div class="mr-2">
-                        <button type="button" class="btn btn-success" wire:click="exportToHTML">
-                            Exportar HTML
-                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="py-1 row justify-content-center">
-        <div class="col-4 bg-white py-2">
-            <form>
+                </fieldset>
+
                 <fieldset>
                     <legend>Componentes:</legend>
 
@@ -600,7 +599,7 @@
                 </fieldset>
             </form>
         </div>
-        <div class="col-8" style="border: 2px solid black">
+        <div class="col-8" style="border: 4px solid black">
             <iframe srcDoc="{{$template}}" width="100%" height="100%"></iframe>
         </div>
     </div>

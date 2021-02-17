@@ -3,6 +3,13 @@
          style="overflow-y: hidden; display: flex; flex-direction: row;">
         <div class="col-4 bg-white py-2" style="overflow-y: auto; height: calc(100vh - 4.5rem);">
             <form wire:submit.prevent="importCSV">
+                <div>
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                </div>
                 <fieldset>
                     <legend>Opções:</legend>
 
@@ -15,8 +22,6 @@
                                     Importar CSV
                                 </button>
 
-{{--                                <form wire:submit.prevent="importCSV">--}}
-                                    <!-- Modal -->
                                     <div class="modal fade"
                                          wire:ignore
                                          id="importCSV"
@@ -59,7 +64,6 @@
                                             </div>
                                         </div>
                                     </div>
-{{--                                </form>--}}
                             </div>
 
                             @if($tabelas)
@@ -79,7 +83,10 @@
                             @endif
 
                             <div class="mb-2">
-                                <button type="button" class="btn btn-success w-100" wire:click="exportToHTML">
+                                <button type="button"
+                                        class="btn btn-success w-100"
+                                        wire:loading.attr="disabled"
+                                        wire:click="exportToHTML">
                                     Exportar HTML
                                 </button>
                             </div>
@@ -410,7 +417,7 @@
 
                     @if($pre_headers)
                         @foreach($pre_headers as $index => $pre_header)
-                            <div class="mb-3">
+                            <div class="mb-3" wire:key="{{$index}}">
                                 <div class="card shadow-sm">
                                     <div class="card-body">
                                         <h5 class="card-title">Pré Header {{$index + 1}}</h5>
@@ -436,6 +443,7 @@
 
                                             <button type="button"
                                                     class="btn btn-danger w-100 mt-2"
+                                                    wire:loading.attr="disabled"
                                                     wire:click="removePreHeader({{$index}})">Remover</button>
                                         </form>
                                     </div>
@@ -481,6 +489,7 @@
 
                                             <button type="button"
                                                     class="btn btn-danger w-100 mt-2"
+                                                    wire:loading.attr="disabled"
                                                     wire:click="removeHeaderBgImage({{$index}})">Remover</button>
                                         </form>
                                     </div>
@@ -516,6 +525,7 @@
 
                                         <button type="button"
                                                 class="btn btn-danger w-100"
+                                                wire:loading.attr="disabled"
                                                 wire:click="removeSection({{$index}})">Remover</button>
                                     </form>
 
@@ -581,6 +591,7 @@
 
                                                             <button type="button"
                                                                     class="btn btn-danger w-100 mt-2"
+                                                                    wire:loading.attr="disabled"
                                                                     wire:click="removeSectionItem({{$index}}, {{$indexItem}})">Remover</button>
                                                         </form>
                                                     </li>
@@ -600,6 +611,9 @@
             </form>
         </div>
         <div class="col-8" style="border: 4px solid black">
+            <div wire:loading>
+                <strong wire:loading>Carregando...</strong>
+            </div>
             <iframe srcDoc="{{$template}}" width="100%" height="100%"></iframe>
         </div>
     </div>

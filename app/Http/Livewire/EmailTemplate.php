@@ -216,31 +216,10 @@ class EmailTemplate extends Component
             }
         }
 
-//        dd($tabelas);
-
-//        dd($planilha);
-
-//        return response()->streamDownload(function () use ($planilha) {
-////            echo $this->csv->get();
-//            echo $planilha;
-//        }, 'arquivo.csv');
         $this->tabelas = $tabelas;
-    }
 
-//    public function sendTestEmail() {
-//        Mail::send($this->template, [
-//            'pre_headers' => $this->pre_headers,
-//            'headerBgImages' => $this->headerBgImages,
-//            'sessoes' => $this->sessoes,
-//            'validade' => $this->validade
-//        ],
-//            function ($message) {
-//                $message->to("ld_silva13@hotmail.com")
-//                    ->from('leandrosilva.2017@alunos.utfpr.edu.br') //not sure why I have to add this
-//                    ->subject('Account verification');
-//            }
-//        );
-//    }
+        session()->flash('message', 'Arquivo importado com sucesso!!');
+    }
 
     public function changeTable($index) {
         $this->selectedTable = $this->tabelas[$index];

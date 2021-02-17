@@ -21,61 +21,109 @@
                                                        align="center" class="row" style="width:600px;max-width:600px;">
                                                     <tr>
                                                         <td align="center" valign="top">
+                                                            <!--[if (gte mso 9)|(IE)]>
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td valign="middle"><![endif]-->
+
                                                         @foreach($pre_headers as $index => $pre_header)
+                                                            <!--[if (gte mso 9)|(IE)]></td>
+                                                            <td valign="middle"><![endif]-->
+                                                            <!-- gap -->
+                                                            <table width="10" border="0" cellpadding="0" cellspacing="0"
+                                                                   align="left" class="row"
+                                                                   style="width:10px;max-width:10px;">
+                                                                <tr>
+                                                                    <td valign="middle" align="center" height="5"
+                                                                        style="font-size:20px;line-height:20px;"></td>
+                                                                </tr>
+                                                            </table>
+                                                            <!-- gap -->
+
+                                                            <!--[if (gte mso 9)|(IE)]></td>
+                                                            <td valign="middle"><![endif]-->
+
                                                             <!-- column -->
-                                                                <table width="360" border="0" cellpadding="0"
-                                                                       cellspacing="0" align="left" class="row"
-                                                                       style="width:360px;max-width:360px;">
-                                                                    <tr>
-                                                                        <td align="center" valign="middle">
-                                                                            <!-- Socials -->
-                                                                            <table border="0" width="100%" cellpadding="0"
-                                                                                   cellspacing="0" align="center"
-                                                                                   style="width:100%; max-width:100%;">
-                                                                                <tr>
-                                                                                    <td valign="middle" align="center">
+                                                            <table width="{{$pre_header['largura']}}" border="0" cellpadding="0"
+                                                                   cellspacing="0" align="left" class="row"
+                                                                   style="width:{{$pre_header['largura']}}px;max-width:{{$pre_header['largura']}}px;">
+                                                                @if($pre_header['link'] > 0)
+                                                                <tr>
+                                                                    <td align="center" valign="middle">
+                                                                        <!-- Socials -->
+                                                                        <table border="0" width="100%" cellpadding="0"
+                                                                               cellspacing="0" align="center"
+                                                                               style="width:100%; max-width:100%;">
+                                                                            <tr>
+                                                                                <td valign="middle" align="center">
+                                                                                    <table border="0" cellpadding="0"
+                                                                                           cellspacing="0" align="{{$index % 2 === 0 ? 'left' : 'right'}}"
+                                                                                           class="center-float">
+                                                                                        <tr>
+                                                                                            <td valign="middle"
+                                                                                                align="center"
+                                                                                                height="26">
+                                                                                                <table border="0"
+                                                                                                       cellpadding="0"
+                                                                                                       cellspacing="0"
+                                                                                                       align="center"
+                                                                                                       style="display:inline-block;vertical-align:middle;">
+                                                                                                    <tr>
+                                                                                                        <td valign="middle"
+                                                                                                            height="16"
+                                                                                                            align="left"
+                                                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:12px;line-height:12px;font-weight:normal;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;">
+                                                                                                                <a class="phone-number"
+                                                                                                                   href="{{$pre_header['link']}}"
+                                                                                                                   style="color:#fff;">{{$pre_header['text']}}</a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <!-- Socials -->
+                                                                    </td>
+                                                                </tr>
+                                                                @else
+                                                                <tr>
+                                                                    <td align="center" valign="middle">
+                                                                        <!-- Socials -->
+                                                                        <table border="0" width="100%" cellpadding="0"
+                                                                               cellspacing="0" align="center"
+                                                                               style="width:100%; max-width:100%;">
+                                                                            <tr>
+                                                                                <td valign="middle" align="center">
 
-                                                                                        <table border="0" cellpadding="0"
-                                                                                               cellspacing="0" align="left"
-                                                                                               class="center-float">
-                                                                                            <tr>
-                                                                                                <td valign="middle"
-                                                                                                    align="center"
-                                                                                                    height="26"
-                                                                                                    style="font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:12px;line-height:12px;font-weight:normal;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;">
-                                                                                                    @if($pre_header['link'] > 0)
-                                                                                                        <a class="phone-number"
-                                                                                                           href="{{$pre_header['link']}}"
-                                                                                                           style="color:#fff;">{{$pre_header['text']}}</a>
-                                                                                                    @else
-                                                                                                        {{$pre_header['text']}}
-                                                                                                    @endif
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </table>
+                                                                                    <table border="0" cellpadding="0"
+                                                                                           cellspacing="0" align="{{$index % 2 === 0 ? 'left' : 'right'}}"
+                                                                                           class="center-float">
+                                                                                        <tr>
+                                                                                            <td valign="middle"
+                                                                                                align="center"
+                                                                                                height="26"
+                                                                                                style="font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:12px;line-height:12px;font-weight:normal;font-style:normal;color:#fff;text-decoration:none;letter-spacing:0px;">
+                                                                                                {{$pre_header['text']}}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
 
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>
-                                                                            <!-- Socials -->
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                                <!-- column -->
-
-                                                            @if(isset($pre_headers[($index + 1)]))
-                                                                <!-- gap -->
-                                                                    <table width="10" border="0" cellpadding="0" cellspacing="0"
-                                                                           align="left" class="row"
-                                                                           style="width:10px;max-width:10px;">
-                                                                        <tr>
-                                                                            <td valign="middle" align="center" height="5"
-                                                                                style="font-size:20px;line-height:20px;"></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <!-- gap -->
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <!-- Socials -->
+                                                                    </td>
+                                                                </tr>
                                                                 @endif
+                                                            </table>
+                                                            <!-- column -->
+
                                                             @endforeach
+                                                            <!--[if (gte mso 9)|(IE)]></td></tr></table>
+                                                            <![endif]-->
                                                         </td>
                                                     </tr>
                                                 </table>

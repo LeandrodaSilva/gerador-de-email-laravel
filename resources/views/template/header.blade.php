@@ -34,6 +34,8 @@
                                             </tr>
                                         </table>
                                     @endforeach
+
+                                    <!--[if (gte mso 9)|(IE)]></v:textbox></v:rect><![endif]-->
                                 </td>
                             </tr>
                         </table>

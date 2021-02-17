@@ -3,12 +3,22 @@
          style="overflow-y: hidden; display: flex; flex-direction: row;">
         <div class="col-4 bg-white py-2" style="overflow-y: auto; height: calc(100vh - 4.5rem);">
             <form wire:submit.prevent="importCSV">
-                <div>
+                <div class="w-100">
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
                         </div>
                     @endif
+                </div>
+                <div wire:loading class="w-100">
+                    <div class="alert alert-success">
+                        Carregando...
+                    </div>
+                </div>
+                <div wire:offline class="w-100">
+                    <div class="alert alert-danger">
+                        Sem conexão com a Internet
+                    </div>
                 </div>
                 <fieldset>
                     <legend>Opções:</legend>
@@ -132,13 +142,22 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="header-bg-image" class="form-label">Link</label>
-                                                        <input id="header-bg-image"
+                                                        <label for="pre-header-text" class="form-label">Link</label>
+                                                        <input id="pre-header-link"
                                                                type="text"
                                                                wire:model="preHeaderLink"
                                                                class="form-control">
                                                     </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="pre-header-largura" class="form-label">Largura</label>
+                                                        <input id="pre-header-largura"
+                                                               type="text"
+                                                               wire:model="preHeaderLargura"
+                                                               class="form-control">
+                                                    </div>
                                                 </div>
+
                                                 <div class="modal-footer">
                                                     <button type="button"
                                                             class="btn btn-danger"
@@ -318,8 +337,6 @@
                                                         </div>
                                                     </div>
 
-
-
                                                     <div class="mb-3">
                                                         <label for="header-bg-image" class="form-label">Imagem</label>
                                                         <input id="header-bg-image"
@@ -441,6 +458,15 @@
                                                        class="form-control">
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="pre-header-largura-{{$index}}" class="form-label">Largura</label>
+                                                <input id="pre-header-largura-{{$index}}"
+                                                       type="number"
+                                                       value="{{$pre_header['largura']}}"
+                                                       wire:change="changePreHeaderLargura({{$index}}, $event.target.value)"
+                                                       class="form-control">
+                                            </div>
+
                                             <button type="button"
                                                     class="btn btn-danger w-100 mt-2"
                                                     wire:loading.attr="disabled"
@@ -535,64 +561,68 @@
                                                 @foreach($sessao['itens'] as $indexItem => $item)
                                                     <li class="list-group-item">
                                                         <form wire:submit.prevent="submit">
-                                                            <div class="mb-3">
-                                                                <label for="item-image-{{$index}}" class="form-label">Produto Imagem</label>
-                                                                <input type="text"
-                                                                       id="item-image-{{$index}}"
-                                                                       value="{{$item['imagem']}}"
-                                                                       wire:change="changeItemImagem({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                            <setction>
+                                                                <legend>Produto {{$indexItem+1}}</legend>
 
-                                                            <div class="mb-3">
-                                                                <label for="item-title-{{$index}}" class="form-label">Produto Nome</label>
-                                                                <input type="text"
-                                                                       id="item-title-{{$index}}"
-                                                                       value="{{$item['titulo']}}"
-                                                                       wire:change="changeItemTitulo({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                                <div class="mb-3">
+                                                                    <label for="item-image-{{$index}}" class="form-label">Imagem</label>
+                                                                    <input type="text"
+                                                                           id="item-image-{{$index}}"
+                                                                           value="{{$item['imagem']}}"
+                                                                           wire:change="changeItemImagem({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
 
-                                                            <div class="mb-3">
-                                                                <label for="item-desconto-{{$index}}" class="form-label">Desconto</label>
-                                                                <input type="text"
-                                                                       id="item-desconto-{{$index}}"
-                                                                       value="{{$item['desconto']}}"
-                                                                       wire:change="changeItemDesconto({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                                <div class="mb-3">
+                                                                    <label for="item-title-{{$index}}" class="form-label">Nome</label>
+                                                                    <input type="text"
+                                                                           id="item-title-{{$index}}"
+                                                                           value="{{$item['titulo']}}"
+                                                                           wire:change="changeItemTitulo({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
 
-                                                            <div class="mb-3">
-                                                                <label for="item-preco-de-{{$index}}" class="form-label">Preço DE</label>
-                                                                <input type="text"
-                                                                       id="item-preco-de-{{$index}}"
-                                                                       value="{{$item['preco-anterior']}}"
-                                                                       wire:change="changeItemPrecoAnterior({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                                <div class="mb-3">
+                                                                    <label for="item-desconto-{{$index}}" class="form-label">Desconto</label>
+                                                                    <input type="text"
+                                                                           id="item-desconto-{{$index}}"
+                                                                           value="{{$item['desconto']}}"
+                                                                           wire:change="changeItemDesconto({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
 
-                                                            <div class="mb-3">
-                                                                <label for="item-preco-por-{{$index}}" class="form-label">Preço POR</label>
-                                                                <input type="text"
-                                                                       id="item-preco-por-{{$index}}"
-                                                                       value="{{$item['preco']}}"
-                                                                       wire:change="changeItemPreco({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                                <div class="mb-3">
+                                                                    <label for="item-preco-de-{{$index}}" class="form-label">Preço DE</label>
+                                                                    <input type="text"
+                                                                           id="item-preco-de-{{$index}}"
+                                                                           value="{{$item['preco-anterior']}}"
+                                                                           wire:change="changeItemPrecoAnterior({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
 
-                                                            <div class="mb-3">
-                                                                <label for="item-link-{{$index}}" class="form-label">URL/Link</label>
-                                                                <input type="text"
-                                                                       id="item-link-{{$index}}"
-                                                                       value="{{$item['link']}}"
-                                                                       wire:change="changeItemLink({{$index}}, {{$indexItem}}, $event.target.value)"
-                                                                       class="form-control">
-                                                            </div>
+                                                                <div class="mb-3">
+                                                                    <label for="item-preco-por-{{$index}}" class="form-label">Preço POR</label>
+                                                                    <input type="text"
+                                                                           id="item-preco-por-{{$index}}"
+                                                                           value="{{$item['preco']}}"
+                                                                           wire:change="changeItemPreco({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
 
-                                                            <button type="button"
-                                                                    class="btn btn-danger w-100 mt-2"
-                                                                    wire:loading.attr="disabled"
-                                                                    wire:click="removeSectionItem({{$index}}, {{$indexItem}})">Remover</button>
+                                                                <div class="mb-3">
+                                                                    <label for="item-link-{{$index}}" class="form-label">URL/Link</label>
+                                                                    <input type="text"
+                                                                           id="item-link-{{$index}}"
+                                                                           value="{{$item['link']}}"
+                                                                           wire:change="changeItemLink({{$index}}, {{$indexItem}}, $event.target.value)"
+                                                                           class="form-control">
+                                                                </div>
+
+                                                                <button type="button"
+                                                                        class="btn btn-danger w-100 mt-2"
+                                                                        wire:loading.attr="disabled"
+                                                                        wire:click="removeSectionItem({{$index}}, {{$indexItem}})">Remover</button>
+                                                            </setction>
                                                         </form>
                                                     </li>
                                                 @endforeach
@@ -611,9 +641,6 @@
             </form>
         </div>
         <div class="col-8" style="border: 4px solid black">
-            <div wire:loading>
-                <strong wire:loading>Carregando...</strong>
-            </div>
             <iframe srcDoc="{{$template}}" width="100%" height="100%"></iframe>
         </div>
     </div>

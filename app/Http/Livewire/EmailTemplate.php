@@ -17,6 +17,7 @@ class EmailTemplate extends Component
 
     public string $preHeaderText = "";
     public string $preHeaderLink = "";
+    public string $preHeaderLargura = "";
 
     public string $headerBgImage_link = "";
     public string $headerBgImage_imagem = "";
@@ -46,23 +47,25 @@ class EmailTemplate extends Component
         $this->pre_headers = [
           [
               'text' => "O Clã agora tá de roupa nova!",
-              'link' => ""
+              'link' => "",
+              'largura' => '360',
           ],
           [
               'text' => "veja no navegador",
-              'link' => "{webview_url}"
+              'link' => "",
+              'largura' => '200',
           ]
         ];
         $this->headerBgImages = [
             [
                 'href' => "https://www.uphillstore.com.br/nova-colecao-2021",
                 'src' => "http://www.zazumaster.com/images/logo.png",
-                'style' => "width: auto;"
+                'style' => "max-width: 200px;"
             ],
             [
                 'href' => "https://www.uphillstore.com.br/nova-colecao-2021",
                 'src' => "http://www.zazumaster.com/images/up_hills_.jpg",
-                'style' => "width: auto;"
+                'style' => "width: 100%;"
             ]
         ];
 
@@ -266,6 +269,11 @@ class EmailTemplate extends Component
         $this->updateTemplate();
     }
 
+    public function changePreHeaderLargura($index, $value) {
+        $this->pre_headers[$index]['largura'] = $value;
+        $this->updateTemplate();
+    }
+
     public function changeValidade($value) {
         $this->validade = $value;
         $this->updateTemplate();
@@ -348,18 +356,21 @@ class EmailTemplate extends Component
     {
         $validatedData = $this->validate([
             'preHeaderText' => 'required',
-            'preHeaderLink' => 'nullable'
+            'preHeaderLink' => 'nullable',
+            'preHeaderLargura' => 'nullable'
         ]);
 
         array_push($this->pre_headers, [
             'text' => $validatedData['preHeaderText'],
-            'link' => $validatedData['preHeaderLink']
+            'link' => $validatedData['preHeaderLink'],
+            'largura' => $validatedData['preHeaderLargura']
         ]);
 
         $this->updateTemplate();
 
         $this->preHeaderText = "";
         $this->preHeaderLink = "";
+        $this->preHeaderLargura = "";
     }
 
     public function addSection()

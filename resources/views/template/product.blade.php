@@ -202,8 +202,8 @@
                                                                         style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:25px; line-height:20px; font-weight:bolder;font-style:normal; color:#444444;text-decoration:none;letter-spacing: 0px;">
                                                                         <br class="hide-mobile"/>
                                                                         <br class="hide-mobile"/><span
-                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:none;letter-spacing: 0px; text-decoration: line-through">{{$item['preco-anterior']}}</span><br/>
-                                                                        {{$item['preco']}}
+                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:none;letter-spacing: 0px; text-decoration: line-through">R${{$item['preco-anterior']}}</span><br/>
+                                                                        R${{$item['preco']}}
                                                                     </td>
                                                                 @else
                                                                     <td class="title center-text"
@@ -212,7 +212,7 @@
                                                                         style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:25px; line-height:20px; font-weight:bolder;font-style:normal; color:#444444;text-decoration:none;letter-spacing: 0px;">
                                                                         <br class="hide-mobile"/>
                                                                         <br class="hide-mobile"/><span
-                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:line-through;letter-spacing: 0px;"></span><br/>{{$item['preco']}}<br
+                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:line-through;letter-spacing: 0px;"></span><br/>R${{$item['preco']}}<br
                                                                             class="mobile-mobile"/>
                                                                     </td>
                                                                 @endif

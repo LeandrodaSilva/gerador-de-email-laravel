@@ -88,7 +88,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Componentes:</legend>
+                    <legend>Elementos:</legend>
 
                     <div class="mb-3">
                         <div class="card shadow-sm">
@@ -386,7 +386,7 @@
 
                 <fieldset>
                     <legend>
-                        Componentes Adicionados:
+                        Elementos Adicionados:
                     </legend>
 
                     <div class="mb-3">

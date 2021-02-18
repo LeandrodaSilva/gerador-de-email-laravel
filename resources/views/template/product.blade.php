@@ -141,7 +141,7 @@
                                                                     style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:14px; line-height:14px; font-weight:bolder;font-style:normal; color:#666666;text-decoration:none;letter-spacing: -0.5px; ">
 
                                                                     <a href="#"
-                                                                       style="background-color:#c02b3e; padding: 5px 10px; color: #fff; border-radius:20px; @if($item['desconto'] === "") display: none; @endif">{{$item['desconto']}}</a>
+                                                                       style="background-color:#c02b3e; padding: 5px 10px; color: #fff; border-radius:20px; @if($item['desconto'] === "") opacity: 0; @endif">{{$item['desconto']}}</a>
 
                                                                 </td>
                                                             </tr>
@@ -182,7 +182,7 @@
                                                                     align="left"
                                                                     style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:16px; line-height:20px; font-weight:bolder;font-style:normal;">
 
-                                                                    <a style="color:#444444;text-decoration:none;letter-spacing: 0px;"
+                                                                    <a style="color:#444444;text-decoration:none;letter-spacing: 0px; display: inline-block; min-height: 60px;"
                                                                        href="{{$item['link']}}">{{$item['titulo']}}</a>
                                                                 </td>
                                                             </tr>
@@ -200,9 +200,7 @@
                                                                         valign="middle"
                                                                         align="left"
                                                                         style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:25px; line-height:20px; font-weight:bolder;font-style:normal; color:#444444;text-decoration:none;letter-spacing: 0px;">
-                                                                        <br class="hide-mobile"/>
-                                                                        <br class="hide-mobile"/><span
-                                                                            style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:none;letter-spacing: 0px; text-decoration: line-through">R${{$item['preco-anterior']}}</span><br/>
+                                                                        <span style="font-family:'Roboto',Arial,Helvetica,sans-serif; font-size:13px; line-height:21px; font-weight:normal;font-style:normal; color:#999;text-decoration:none;letter-spacing: 0px; text-decoration: line-through">R${{$item['preco-anterior']}}</span><br/>
                                                                         R${{$item['preco']}}
                                                                     </td>
                                                                 @else

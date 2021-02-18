@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+//Route::get('/', function () {
+//    return redirect()->route('login');
+//});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function (Request $request) {
+    Route::get('/', function (Request $request) {
         return view('dashboard');
     })->name('dashboard');
 

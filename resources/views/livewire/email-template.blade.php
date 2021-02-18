@@ -1,5 +1,5 @@
 <div class="container-fluid col-12">
-    <div class="py-1 row justify-content-center"
+    <div class="row justify-content-center"
          style="overflow-y: hidden; display: flex; flex-direction: row;">
         <div class="col-4 bg-white py-2" style="overflow-y: auto; height: calc(100vh - 4.5rem);">
             <form wire:submit.prevent="importCSV">

@@ -640,7 +640,7 @@
                 </fieldset>
             </form>
         </div>
-        <div class="col-8" style="border: 4px solid black">
+        <div class="col-8">
             <iframe srcDoc="{{$template}}" width="100%" height="100%"></iframe>
         </div>
     </div>
